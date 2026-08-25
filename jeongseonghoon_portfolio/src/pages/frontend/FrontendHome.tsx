@@ -1,10 +1,12 @@
 import { NavLink, Outlet, Link } from 'react-router-dom'
 
-// 프론트엔드 하위 탭 목록. path는 /frontend 기준 상대 경로
+// 프론트엔드 하위 탭 목록
+// 쇼핑몰은 /frontend 안에 중첩된 페이지가 아니라 완전히 독립된 사이트(/shopping)이므로
+// 절대 경로를 써서 이동한다. 나머지 탭은 /frontend 기준 상대 경로를 그대로 쓴다
 const TABS = [
-  { path: 'components', label: '컴포넌트 디자인' },
-  { path: 'shopping', label: '쇼핑몰' },
-  { path: 'messenger', label: '메신저' },
+  { to: 'components', label: '컴포넌트 디자인' },
+  { to: '/shopping', label: '쇼핑몰' },
+  { to: 'messenger', label: '메신저' },
 ]
 
 /**
@@ -23,8 +25,8 @@ function FrontendHome() {
           <nav className="flex gap-2">
             {TABS.map((tab) => (
               <NavLink
-                key={tab.path}
-                to={tab.path}
+                key={tab.to}
+                to={tab.to}
                 // NavLink는 현재 경로와 일치할 때 isActive를 true로 넘겨준다
                 className={({ isActive }) =>
                   `rounded-full px-4 py-2 text-sm font-medium transition-colors ${

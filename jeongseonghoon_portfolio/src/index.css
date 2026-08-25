@@ -1,7 +1,97 @@
 /* Tailwind CSS v4 진입점 - 이 한 줄이 Tailwind의 모든 유틸리티 클래스를 활성화한다 */
 @import "tailwindcss";
+/* shadcn/ui 컴포넌트(Accordion/Tooltip/Select 등)가 쓰는 animate-in/animate-out, accordion-down 등의
+   애니메이션 유틸리티를 제공하는 플러그인 */
+@import "tw-animate-css";
 
 /* 다크모드는 별도 설정 없이 사용자의 OS/브라우저 설정(prefers-color-scheme)을 그대로 따른다 */
+
+/* 쇼핑몰(/shopping) 전용 브랜드 컬러: shooping_exp(SHOPHUB) 참고 디자인의 네이비+블루 2색 체계
+   bg-primary-100, text-accent-500 처럼 다른 Tailwind 색상과 동일하게 사용할 수 있다 */
+@theme {
+  /* 네이비 계열: 로고/활성 카테고리/가격/메인 CTA. primary-900이 참고 디자인의 기준색(#014274)과 정확히 일치 */
+  --color-primary-50: #edf7ff;
+  --color-primary-100: #d7edff;
+  --color-primary-200: #a4d7fe;
+  --color-primary-300: #67bcfe;
+  --color-primary-400: #219dfd;
+  --color-primary-500: #0279d4;
+  --color-primary-600: #015ca2;
+  --color-primary-700: #014e89;
+  --color-primary-800: #01487e;
+  --color-primary-900: #014274; /* 기준 색상 */
+  --color-primary-950: #012847;
+
+  /* 블루 계열: 로고 포인트/장바구니 뱃지/검색창 포커스/BEST 뱃지/링크 강조. accent-500이 기준색(#0681F2)과 정확히 일치 */
+  --color-accent-50: #ebf5ff;
+  --color-accent-100: #d2e9fe;
+  --color-accent-200: #a5d3fd;
+  --color-accent-300: #6ab6fb;
+  --color-accent-400: #389dfa;
+  --color-accent-500: #0681f2; /* 기준 색상 */
+  --color-accent-600: #0565bd;
+  --color-accent-700: #044d90;
+  --color-accent-800: #033869;
+  --color-accent-900: #022546;
+}
+
+/* shadcn/ui 컴포넌트(컴포넌트 갤러리 전용)가 참조하는 시맨틱 색상 토큰
+   shooping_exp/src/styles/theme.css의 라이트 모드 값을 그대로 옮겼다.
+   전역 h1/button/input 기본 스타일 재정의(@layer base)는 포트폴리오 전체 디자인과 충돌하므로 가져오지 않고
+   .dark 클래스 토글도 우리 프로젝트엔 없어서(다크모드는 prefers-color-scheme만 사용) 다크 값은 생략했다 -
+   즉 이 색상들을 쓰는 shadcn 컴포넌트는 항상 라이트 톤으로 보인다 */
+:root {
+  --background: #ffffff;
+  --foreground: oklch(0.145 0 0);
+  --card: #ffffff;
+  --card-foreground: oklch(0.145 0 0);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.145 0 0);
+  --primary: #014274;
+  --primary-foreground: #ffffff;
+  --secondary: #ebf4ff;
+  --secondary-foreground: #014274;
+  --muted: #f5f4f3;
+  --muted-foreground: #6f6f6f;
+  --accent: #0681f2;
+  --accent-foreground: #ffffff;
+  --destructive: #d4183d;
+  --destructive-foreground: #ffffff;
+  --border: rgba(0, 0, 0, 0.1);
+  --input: transparent;
+  --input-background: #f3f3f5;
+  --switch-background: #cbced4;
+  --ring: oklch(0.708 0 0);
+  --radius: 0.625rem;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-input-background: var(--input-background);
+  --color-switch-background: var(--switch-background);
+  --color-ring: var(--ring);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+}
 
 html,
 body,

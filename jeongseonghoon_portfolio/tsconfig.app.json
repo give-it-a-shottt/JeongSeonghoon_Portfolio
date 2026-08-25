@@ -22,5 +22,7 @@
     "erasableSyntaxOnly": true,
     "noFallthroughCasesInSwitch": true
   },
-  "include": ["src"]
+  "include": ["src"],
+  // shooping_exp는 학습용으로 참고한 Figma 내보내기 원본(의존성 미설치)이라 빌드 대상에서 제외한다
+  "exclude": ["src/shooping_exp"]
 }
